@@ -1,5 +1,7 @@
 package ihmsimple.app;
 
+import ihmsimple.services.ServiceDevine;
+
 public class IhmSimple {
     
     /**
@@ -11,6 +13,14 @@ public class IhmSimple {
      */
     public static void main(String[] args) {
         // VOTRE CODE ICI...
+        Controller refCtrl = new Controller();
+        ServiceDevine refServiceDevine = new ServiceDevine();
+        refCtrl.setRefServiceDevine(refServiceDevine);
+        View refView = new View();
+        refCtrl.setRefView(refView);
+        refView.setRefCtrl(refCtrl);
+        refServiceDevine.SetRefCtrl(refCtrl);
+        refCtrl.start();
     }
 
 }
