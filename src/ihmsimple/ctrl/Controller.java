@@ -1,5 +1,6 @@
 package ihmsimple.ctrl;
 
+import java.awt.Color;
 import static ihmsimple.services.ServiceDevine.NOMBRE_INVALIDE;
 
 import ihmsimple.services.ServiceDevine;
@@ -28,6 +29,7 @@ public class Controller {
      */
     // VOTRE CODE ICI...
     private ServiceDevine refServiceDevine;
+
     /**
      * Constructeur du contrôleur. Comme toujours, le travail N°1 consiste à
      * initialiser TOUS nos attributs :-).
@@ -48,9 +50,9 @@ public class Controller {
      */
     public void actionDemarrerNouveauJeu() {
         // VOTRE CODE ICI...
-        ihmStart refView = new ihmStart();
         refServiceDevine.penserAUnNombre();
-        
+        int nombre = refServiceDevine.penserAUnNombre();
+        refView.afficherStatus("Devinez !", Color.YELLOW);
     }
 
     /**
@@ -59,6 +61,21 @@ public class Controller {
      */
     public void actionDeviner() {
         // VOTRE CODE ICI...
+        if (nombre != NOMBRE_INVALIDE) {
+            int valeurProposee = refView.lireValeurProposee();
+
+            if (valeurProposee != NOMBRE_INVALIDE) {
+                if (valeurProposee < nombre) {
+                    refView.afficherStatus("Trop petit !", Color.RED);
+                } else if (valeurProposee > nombre) {
+                    refView.afficherStatus("Trop grand !", Color.RED);
+                } else {
+                    refView.afficherStatus("Trouvé !!!", Color.RED);
+                }
+            } else {
+                refView.afficherStatus("Entrez un nombre !", Color.YELLOW);
+            }
+        }
     }
 
     /**
@@ -78,6 +95,7 @@ public class Controller {
      */
     public void setRefView(View refView) {
         // VOTRE CODE ICI...
+        this.refView = refView;
     }
 
     /**
@@ -88,6 +106,7 @@ public class Controller {
      */
     public void setRefServiceDevine(ServiceDevine refServiceDevine) {
         // VOTRE CODE ICI...
+        this.refServiceDevine = refServiceDevine;
     }
 
     /**
@@ -97,6 +116,7 @@ public class Controller {
      */
     public View getRefView() {
         // VOTRE CODE ICI...
+        return refView;
     }
 
     /**
@@ -106,6 +126,7 @@ public class Controller {
      */
     public ServiceDevine getRefServiceDevine() {
         // VOTRE CODE ICI...
+        return refServiceDevine;
     }
 
 }

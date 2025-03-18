@@ -1,7 +1,7 @@
 package ihmsimple.app;
-
+import ihmsimple.ctrl.Controller;
 import ihmsimple.services.ServiceDevine;
-
+import ihmsimple.views.View;
 public class IhmSimple {
     
     /**
@@ -19,7 +19,7 @@ public class IhmSimple {
         View refView = new View();
         refCtrl.setRefView(refView);
         refView.setRefCtrl(refCtrl);
-        refServiceDevine.SetRefCtrl(refCtrl);
+        refServiceDevine.setRefCtrl(refCtrl);
         refCtrl.start();
     }
 

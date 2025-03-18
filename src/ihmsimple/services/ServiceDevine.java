@@ -1,5 +1,5 @@
 package ihmsimple.services;
-
+import ihmsimple.ctrl.Controller;
 /**
  * Classe représentant le service de l'application MVC "IhmSimple".
  * 
@@ -60,7 +60,7 @@ public class ServiceDevine {
      */
     public void setRefCtrl(Controller refCtrl) {
         // VOTRE CODE ICI...
-        return refCtrl;
+        this.refCtrl = refCtrl;
     }
 
     /**
